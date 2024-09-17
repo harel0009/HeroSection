@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <!-- שמירת initial-scale=1.0 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section Scroll Effect</title>
+    <!-- קישור לקובץ ה-CSS החיצוני -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- האנימציה של "בק" -->
+    <div class="hero-container">
+        <div id="bubbles" class="bubbles-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo">
+                <div class="slogan">
+                    המטרה שלנו היא לתת לך את הכלים להגדיל<br> את קהל הלקוחות וההכנסות שלך<span>.</span>
+                </div>
+            </div>
+            <div class="gradient-bg">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                            <feColorMatrix in="blur" mode="matrix"
+                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+                            <feBlend in="SourceGraphic" in2="goo" />
+                        </filter>
+                    </defs>
+                </svg>
+                <div class="gradients-container">
+                    <div class="g1"></div>
+                    <div class="g2"></div>
+                    <div class="g3"></div>
+                    <div class="g4"></div>
+                    <div class="g5"></div>
+                    <div class="interactive"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- תמונה של "פרונט" -->
+        <div class="hero">
+            <img src="images/image1.webp" id="image1" alt="תמונה 1">
+        </div>
+    </div>
+
+    <!-- טעינת קובץ ה-JavaScript החיצוני -->
+    <script src="script.js"></script>
+</body>
+</html>
