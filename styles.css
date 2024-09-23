@@ -41,7 +41,7 @@ body, html {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 115vh;
     z-index: -1; /* ה-"בק" נמצא מאחורי ה-"פרונט" */
     overflow: hidden; /* להבטיח שלא יראו את החלקים שמחוץ ל-"פרונט" */
 }
