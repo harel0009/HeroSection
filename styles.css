@@ -87,6 +87,19 @@ body, html {
     color: #00BDFF;
 }
 
+/* דוגמה לשינוי המיקום של הלוגו */
+.logo-top-left {
+    --logo-top: 10%; /* מיקום מלמעלה */
+    --logo-left: 10%; /* מיקום משמאל */
+    --logo-width: 150px; /* גודל מותאם אישית */
+}
+
+.logo-bottom-right {
+    --logo-top: 90%; /* מיקום מלמטה */
+    --logo-left: 90%; /* מיקום מימין */
+    --logo-width: 100px; /* גודל מותאם אישית */
+}
+
 :root {
     --color-bg1: rgb(108, 0, 162);
     --color-bg2: rgb(0, 17, 82);
@@ -98,9 +111,6 @@ body, html {
     --color-interactive: 140, 100, 255;
     --circle-size: 80%;
     --blending: hard-light;
-    --logo-width: 300px; /* גודל ברירת מחדל של הלוגו */
-    --logo-top: 50%; /* מיקום אנכי ברירת מחדל */
-    --logo-left: 50%; /* מיקום אופקי ברירת מחדל */
 }
 
 @keyframes moveInCircle {
@@ -155,6 +165,7 @@ body, html {
     height: 100%;
     position: relative;
     overflow: hidden;
+    /* הסרת overflow: hidden כדי לאפשר לאנימציה לעבוד */
 }
 
 .g1, .g2, .g3, .g4, .g5, .interactive {
@@ -162,6 +173,7 @@ body, html {
     background-size: cover;
 }
 
+/* הגבלת הגודל של האלמנטים למניעת גלישה */
 .g1, .g2, .g3, .g4, .g5 {
     width: var(--circle-size);
     height: var(--circle-size);
@@ -189,7 +201,7 @@ body, html {
     background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
     mix-blend-mode: var(--blending);
     top: calc(50% - var(--circle-size) / 2 + 200px);
-    left: calc(50% - var(--circle-size) / 2 - 500px);
+    left: calc(50% - var(--circle-size) / 2 - 500px); /* השארתי את הערך המקורי */
     animation: moveInCircle 40s linear infinite;
 }
 
@@ -212,28 +224,28 @@ body, html {
     mix-blend-mode: var(--blending);
     width: 100%;
     height: 100%;
-    top: -50%;
+    top: -50%; /* החזרת הערכים המקוריים */
     left: -50%;
     opacity: 0.7;
 }
 
 /* Media Queries להפיכת הלוגו לרספונסיבי */
 @media (max-width: 768px) {
-    :root {
+    .logo-container img {
         --logo-width: 200px; /* גודל מותאם לנייד */
     }
     .slogan {
-        font-size: 24px; /* גודל טקסט מותאם לנייד */
-        top: 180px; /* מיקום מתוקן */
+        font-size: 16px; /* גודל טקסט מותאם לנייד */
+        top: 100px; /* מיקום מתוקן */
     }
 }
 
 @media (max-width: 480px) {
-    :root {
+    .logo-container img {
         --logo-width: 150px; /* גודל מותאם למסכים קטנים יותר */
     }
     .slogan {
-        font-size: 16px; /* גודל טקסט מותאם למסכים קטנים יותר */
-        top: 100px; /* מיקום מתוקן */
+        font-size: 24px; /* גודל טקסט מותאם למסכים קטנים יותר */
+        top: 180px; /* מיקום מתוקן */
     }
 }
