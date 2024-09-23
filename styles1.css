@@ -1,0 +1,242 @@
+<style>
+        /* הגדרת box-sizing */
+       /* הוספת box-sizing: border-box */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 115vh; /* כדי לאפשר גלילה */
+    overflow-x: hidden; /* מניעת גלילה אופקית */
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* להסתיר את החלקים שמחוץ לאזור של ה-"פרונט" */
+}
+
+.hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1; /* ה-"פרונט" נמצא מעל ה-"בק" */
+}
+
+.hero img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* ה-"בק" נמצא מאחורי ה-"פרונט" */
+    overflow: hidden; /* להבטיח שלא יראו את החלקים שמחוץ ל-"פרונט" */
+}
+
+/* סגנונות ה-"בק" המקוריים */
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+
+.logo-container {
+    z-index: 100;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    justify-content: center; /* ניתן לשנות למיקום מדויק */
+    align-items: center; /* ניתן לשנות למיקום מדויק */
+}
+
+.logo-container img {
+    width: var(--logo-width, 300px); /* שליטה בגודל */
+    height: auto;
+    position: absolute;
+    top: var(--logo-top, 50%); /* שליטה במיקום אנכי */
+    left: var(--logo-left, 50%); /* שליטה במיקום אופקי */
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s ease; /* אנימציה חלקה של הטרנספורם */
+}
+
+.slogan {
+    font-family: 'Arial', sans-serif;
+    color: black;
+    font-size: 40px; /* גודל ברירת מחדל */
+    font-weight: bold;
+    text-align: center;
+    direction: rtl;
+    position: relative;
+    top: 250px; /* מיקום מתחת ללוגו */
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+/* סגנון הנקודה הכחולה */
+.slogan span {
+    color: #00BDFF;
+}
+
+:root {
+    --color-bg1: rgb(108, 0, 162);
+    --color-bg2: rgb(0, 17, 82);
+    --color1: 18, 113, 255;
+    --color2: 221, 74, 255;
+    --color3: 100, 220, 255;
+    --color4: 200, 50, 50;
+    --color5: 180, 180, 50;
+    --color-interactive: 140, 100, 255;
+    --circle-size: 80%;
+    --blending: hard-light;
+    --logo-width: 300px; /* גודל ברירת מחדל של הלוגו */
+    --logo-top: 50%; /* מיקום אנכי ברירת מחדל */
+    --logo-left: 50%; /* מיקום אופקי ברירת מחדל */
+}
+
+@keyframes moveInCircle {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveVertical {
+    0% {
+        transform: translateY(-50%);
+    }
+    50% {
+        transform: translateY(50%);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes moveHorizontal {
+    0% {
+        transform: translateX(-50%) translateY(-10%);
+    }
+    50% {
+        transform: translateX(50%) translateY(10%);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-10%);
+    }
+}
+
+.gradient-bg {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+    top: 0;
+    left: 0;
+}
+
+.gradients-container {
+    filter: url(#goo) blur(40px);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.g1, .g2, .g3, .g4, .g5, .interactive {
+    position: absolute;
+    background-size: cover;
+}
+
+.g1, .g2, .g3, .g4, .g5 {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    max-width: 150%;
+    max-height: 150%;
+}
+
+.g1 {
+    background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    animation: moveVertical 30s ease infinite;
+}
+
+.g2 {
+    background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    animation: moveInCircle 20s reverse infinite;
+}
+
+.g3 {
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    top: calc(50% - var(--circle-size) / 2 + 200px);
+    left: calc(50% - var(--circle-size) / 2 - 500px);
+    animation: moveInCircle 40s linear infinite;
+}
+
+.g4 {
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    animation: moveHorizontal 40s ease infinite;
+}
+
+.g5 {
+    background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: calc(var(--circle-size) * 2);
+    height: calc(var(--circle-size) * 2);
+    animation: moveInCircle 20s ease infinite;
+}
+
+.interactive {
+    background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: 100%;
+    height: 100%;
+    top: -50%;
+    left: -50%;
+    opacity: 0.7;
+}
+
+/* Media Queries להפיכת הלוגו לרספונסיבי */
+@media (max-width: 768px) {
+    :root {
+        --logo-width: 200px; /* גודל מותאם לנייד */
+    }
+    .slogan {
+        font-size: 24px; /* גודל טקסט מותאם לנייד */
+        top: 180px; /* מיקום מתוקן */
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --logo-width: 150px; /* גודל מותאם למסכים קטנים יותר */
+    }
+    .slogan {
+        font-size: 16px; /* גודל טקסט מותאם למסכים קטנים יותר */
+        top: 100px; /* מיקום מתוקן */
+    }
+}
+    </style>
