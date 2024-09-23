@@ -61,7 +61,7 @@ body, html {
 
 .logo-container img {
     width: var(--logo-width, 300px); /* שליטה בגודל */
-    height: 115vh;
+    height: auto;
     position: absolute;
     top: var(--logo-top, 50%); /* שליטה במיקום אנכי */
     left: var(--logo-left, 50%); /* שליטה במיקום אופקי */
